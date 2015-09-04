@@ -1596,6 +1596,7 @@ order_list
 
 .product-detail-container-width-regular {
     padding: 0;
+    padding-top: .4rem;
     background: rgb(246, 246, 246);
     font-size: .15rem;
 }
@@ -1638,7 +1639,7 @@ order_list
 .detail-card .flags li:before {
     content: '';
     position: absolute;
-    top: 0; left: -.14rem;
+    top: 0; left: -.85em;
     width: 0;
     height: 0;
     border: .1rem solid transparent;
@@ -1764,6 +1765,11 @@ legend {
     padding: .15rem 0;
 }
 
+.product-detail-container-width-regular .comments {
+    width: 100%;
+    color: black;
+}
+
 .product-detail-container-width-regular .comments .favor {
     display: inline-block;
     color: rgb(238, 75, 0);
@@ -1792,6 +1798,7 @@ legend {
     color: white;
     display: flex;
     text-align: center;
+    max-width: 100%;
 }
 
 .product-detail-container-width-regular .lanmall-cart {
@@ -1814,7 +1821,7 @@ legend {
 
 .order-detail-container-width-regular {
     padding: 0 .15rem;
-    padding-top: .15rem;
+    padding-top: .6rem;
     background: rgb(246, 246, 246);
     font-size: .16rem;
 }
