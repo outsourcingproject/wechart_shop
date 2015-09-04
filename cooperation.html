@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>我有想法</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <meta name="viewport" content="user-scalable=no,maximum-scale=1,width=device-width,initial-scale=1" />
+</head>
+<body>
+    <div class="container-width-full">
+        <div class="header">
+            合作信息采集
+        </div>
+    </div>
+    <div class="container-width-full cooperation-container">
+        <div class="cooperation-user-info">
+            <ul>
+                <form   id="test">
+                    <li><span>收货人姓名</span><input type="text" disabled  name="name" size="26"></li>
+                    <li><span>电话号码</span><input type="text"   name="phonenum" size="26"></li>
+                    <li><span>省市区</span><input type="text"   name="city" size="26"></li>
+                    <li><span>详细地址</span><input type="text"   name="address" size="26"></li>
+                </form>
+            </ul>
+        <div class="container-bottom">
+            <textarea form="test" name="introduction" >产品详细描述</textarea>
+            <p>产品实拍图</p>
+            <div class="container-pics">
+                <ul>
+                    <li class="container-pic" >
+                        <img src="">
+                    </li>
+                    <li class="container-pic">
+                        <img src="">
+                    </li>
+                    <li class="container-pic">
+                        <img src="">
+                    </li>
+                    <li class="container-pic">
+                        <img src="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="cooperation-button-container">
+            <button   form="test" onclick="submit();return false;">提交</button>
+
+        </div>
+
+          <!--<form  action="index.html" method="get" id="test">-->
+            <!--1<input type="text" value="123" name="a" size="50">-->
+           <!--2 <input type="text" value="123" name="b" size="50">-->
+           <!--3 <input type="text" value="123" name="c" size="50">-->
+            <!--<textarea rows="5" name="ok" cols="55">123</textarea>-->
+
+          <!--</form>-->
+
+            <!--<button type="submit" form="test" >tijiao</button>-->
+        </div>
+
+        <div class="cooperation-des">
+
+        </div>
+        <div class="cooperation-pic">
+
+        </div>
+    </div>
+</body>
+<script>
+    //var form = document.forms[0]
+   // var xhr = new XMLHTTPRequest();
+    //var xhr = new XMLHttpRequest();
+    //xhr.getResponseHeader();
+
+    function submit(){
+        alert('begin');
+        var form = document.forms[0];
+        var json={
+            name:form.elements[0].value,
+            phonenum:form.elements[1].value,
+            city:form.elements[2].value,
+            address:form.elements[3].value,
+            introduction:form.elements[4].value
+        }
+        alert('begin1');
+        var jsonText =JSON.stringify(json);
+        var xhr = new XMLHttpRequest();
+        xhr.open("post","http://lbs.ilanmall.com/user/cooperation/",false);
+        xhr.send(jsonText);
+        alert('begin2');
+        alert(xhr.responseText);
+        alert(xhr.status);
+        alert(xhr.getResponseHeader());
+        var abc =createXHR();
+    }
+</script>
+</html>

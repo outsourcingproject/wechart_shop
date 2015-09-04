@@ -1,0 +1,82 @@
+body {
+  background: white url("../images/logo.png") no-repeat fixed 50% 80%;
+  background-size: 20%;
+}
+
+.loading {
+  height: 6em;
+  width: 9em;
+  border-radius: 5px;
+  
+  z-index: 99;
+  background: rgb(120, 120, 120);
+  color: white;
+  font-size: 0.16em;
+}
+
+.inner-loading {
+  position: relative;
+}
+
+.loading div {
+  display: block;
+  width: .4rem;
+  height: .4rem;
+  margin: .1rem auto;
+  border: 2px solid white;
+  border-bottom-color: transparent;
+  border-radius: 100%;
+  animation: rotate 1s 0s linear infinite;
+  -webkit-animation: rotate 1s 0s linear infinite;
+}
+
+
+.loading-cart {
+    background-color: #ffffff;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    color: white;
+    font-size: 0.16em;
+}
+
+.inner-loading {
+    position: relative;
+}
+
+.loading-cart div {
+    display: block;
+    width: .3rem;
+    height: .3rem;
+    margin: .1rem auto;
+    border: 2px solid #237fe5;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-radius: 100%;
+    animation: rotate 1s 0s linear infinite;
+    -webkit-animation: rotate 1s 0s linear infinite;
+}
+
+
+
+.loading p {
+  text-align: center;
+  margin: 20px 0;
+}
+
+
+@keyframes rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+
+    50% {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg)
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}

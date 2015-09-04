@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>购物车</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/splash.css">
+    <meta name="viewport" content="user-scalable=no,maximum-scale=1,width=device-width,initial-scale=1"/>
+    <script src="./scripts/helper.js"></script>
+</head>
+<body>
+<div class="container-width-full">
+    <div class="header">
+        购物车
+    </div>
+
+</div>
+<div class="container cart-container">
+    <div class="cart-list">
+
+        <section class="cart-tab">
+            <div class="cart-checkbox" onclick="setCheckboxState(childNode(this,0))">
+                <div class="checkbox"></div>
+            </div>
+            <div class="cart-tab-img">
+
+                <img src="images/index-product.jpg">
+
+            </div>
+            <div class="cart-tab-des" >
+                <p class="cart-tab-des-title">
+                    甘肃土豆，优质马铃薯，原产地兰州直采，口至酥软，适炖汤至酥软，适炖甘肃土豆，优质马铃薯，原产地兰州直采，口至酥软，适炖汤至酥软，适炖
+                </p>
+
+                <p class="cart-tab-des-quantity">
+                    规格：500g
+                </p>
+                <div class="cart-tab-edit-del" onclick="cartEditorDel(this,111)">X</div>
+
+                <div class="cart-tab-des-prices">
+                    ¥ 100
+                </div>
+                <div class="cart-tab-editor">
+                    <div class="cart-tab-editor-reduce" onclick="cartEditorReduce(this,111)">－</div>
+                    <div class="cart-tab-editor-count"><span>2</span></div>
+                    <div class="cart-tab-editor-add" onclick="cartEditorAdd(this,111)">＋</div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="cart-tab">
+            <div class="cart-checkbox" onclick="setCheckboxState(childNode(this,0))">
+                <div class="checkbox checked"></div>
+            </div>
+            <div class="cart-tab-img">
+
+                <img src="images/index-product.jpg">
+
+            </div>
+            <div class="cart-tab-des" >
+                <p class="cart-tab-des-title">
+                    甘肃土豆，优质马铃薯，原产地兰州直采，口至酥软，适炖汤至酥软，适炖甘肃土豆，优质马铃薯，原产地兰州直采，口至酥软，适炖汤至酥软，适炖
+                </p>
+
+                <p class="cart-tab-des-quantity">
+                    规格：500g
+                </p>
+                <div class="cart-tab-edit-del" onclick="cartEditorDel(this,111)">X</div>
+
+                <div class="cart-tab-des-prices">
+                    ¥ 100
+                </div>
+                <div class="cart-tab-editor">
+                    <div class="cart-tab-editor-reduce" onclick="cartEditorReduce(this,111)">－</div>
+                    <div class="cart-tab-editor-count"><span>2</span></div>
+                    <div class="cart-tab-editor-add" onclick="cartEditorAdd(this,111)">＋</div>
+                </div>
+            </div>
+
+        </section>
+        <div class="loading-cart">
+            <div></div>
+        </div>
+
+        <div class="cart-blank">
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+<div class="cart-checkout-container">
+    <div class="cart-checkout">
+
+        <div  class="cart-checkbox" onclick="selectAll()">
+            <div id="selecte-all" class="checkbox"></div>
+        </div>
+
+        <div class="cart-checkbox-select-all" onclick="selectAll()">
+            全选
+        </div>
+
+        <div class="cart-checkout-count">共计：<span id="listAllCount"></span></div>
+        <form action="/order/create" method="post">
+            <button type="submit" class="cart-checkout-button"  >去结算 </button>
+            <!--<div class="cart-checkout-button">去结算</div>-->
+        </form>
+    </div>
+</div>
+<div class="container-menu">
+    <div class="menu">
+        <ul>
+            <li ><a class="icon-lanmall-home " href="/" ></a>
+            </li><li><a class="icon-lanmall-cart menu-color-green" href="/cart"></a>
+        </li><li><a class="menu-center"  href="#"><img src="images/index-menu-center.png"></a>
+        </li><li><a class="icon-lanmall-compass" href="/fans/"></a>
+        </li><li><a class="icon-lanmall-center" href="/user/"></a></li>
+        </ul>
+    </div>
+</div>
+</body>
+<script>
+
+    var baseURL='xxxxxx'//TODO: write the baseURL
+    var xhr = new XMLHttpRequest();
+    var cartEditorStatus = true;
+    xhr.open('post','example.txt',false);
+    xhr.send(null);
+
+//    if((xhr.status>=200 && xhr.status<300)|| xhr.status==304){
+//        cartList = JSON.parse(xhr.responseText);
+//        if(cartList[0].productid!==undefined){
+//            var cartListHtml = '';
+//            var docs = document.getElementsByClassName('cart-list')[0];
+//            //div = document.createElement("section");
+//            //div.
+//
+//            for(i=0;i<cartList.length;i++){
+//                //alert(cartList[i].productid);
+//                cartListHtml+='<section class="cart-tab"><div class="cart-tab-img"><img src="'+cartList[i].imgurl+'"></div> <div class="cart-tab-des"><p class="cart-tab-des-title">'+cartList[i].title+'</p><p class="cart-tab-des-quantity">规格：500g</p><p class="cart-tab-des-prices">¥ '+cartList[i].prices+'<span class="cart-tab-des-count">X '+cartList[i].count+'</span></p></div>' +'<div class="cart-tab-edit"><div class="cart-tab-editor"><div class="cart-tab-editor-reduce" onclick="cartEditorReduce(this,'+cartList[i].productid+')">－</div><div class="cart-tab-editor-count">X<span>'+cartList[i].count+'</span></div><div class="cart-tab-editor-add" onclick="cartEditorAdd(this,'+cartList[i].productid+')">＋</div></div><div class="cart-tab-edit-quantity">规格：500g</div><div class="cart-tab-edit-count">单价：￥'+cartList[i].prices+'</div><div class="cart-tab-edit-del" onclick="cartEditorDel(this,'+cartList[i].productid+')">删除</div></div></section>';
+//
+//            };
+//            //console.log(cartListHtml);
+//
+//             docs.innerHTML=cartListHtml +'<div class="loading-cart"><div></div></div><div class="cart-blank"></div>';
+//            countPrices();
+//            document.getElementsByClassName("cart-checkout-button")[0].disabled = false;
+//        }else{
+//            document.getElementsByClassName("cart-checkout-button")[0].disabled = true;
+//
+//        }
+//
+//    }else{
+//        alert(xhr.status);
+//        alert(xhr.getAllResponseHeaders());
+//    }
+
+
+
+
+
+    function cartEditorAdd(r,productId){
+        var count = parseInt(previousSibling(r).childNodes[0].innerText);
+        count++;
+        previousSibling(r).childNodes[0].innerText= count;
+
+
+        var jsonUpdate= {
+            productid:productId,
+            count:count
+        }
+        var h = new XMLHttpRequest();
+        h.open('post',baseURL+'/cart/update',true);
+        h.send(JSON.stringify(jsonUpdate));
+        h.onreadystatechange = function(){
+            if(h.readyState==4){
+                console.log(h.responseText);
+            }
+        }
+
+
+        countPrices();
+    }
+    function cartEditorReduce(r,productId){
+        var count = parseInt(nextSibling(r).childNodes[0].innerText);
+        if(count>1){
+            count--;
+        }
+
+        nextSibling(r).childNodes[0].innerText= count;
+
+//        var jsonUpdate= {
+//            productid:productId,
+//            count:count
+//        }
+//        var h = new XMLHttpRequest();
+//        h.open('post',baseURL+'/cart/update',true);
+//        h.send(JSON.stringify(jsonUpdate));
+//        h.onreadystatechange = function(){
+//            if(h.readyState==4){
+//                console.log(h.responseText);
+//            }
+//        }
+
+        countPrices();
+    }
+    function cartEditorDel(r,productId){
+        var jsonUpdate= {
+            productid:productId
+
+        }
+        var listDel = r.parentNode.parentNode;
+        listDel.parentNode.removeChild(listDel);
+
+//        var h = new XMLHttpRequest();
+//        h.open('post',baseURL+'/cart/del',true);
+//        h.send(JSON.stringify(jsonUpdate));
+//        h.onreadystatechange = function(){
+//            if(h.readyState==4){
+//                console.log(h.responseText);
+//            }
+//        }
+
+        countPrices();
+    }
+    function countPrices(){
+        var listAllPrices = 0;
+        lists= document.getElementsByClassName("cart-tab-des");
+
+        for(var i=0;i<lists.length;i++){
+            if(!hasClass(lists[i].parentNode.getElementsByClassName('checkbox')[0],'checked')){
+                continue;
+            }
+            var listPrices=parseInt(childNode(lists[i],3).innerText.replace(/[^0-9]/ig,""));
+
+            var listCount =parseInt(childNode(childNode(lists[i],4),1).innerText);
+
+            listAllPrices += listPrices*listCount;
+
+        }
+        document.getElementById("listAllCount").innerText="¥"+listAllPrices.toString();
+
+    }
+
+    function selectAll(){
+        var checkboxes=document.getElementsByClassName('checkbox');
+        var selectAll=document.getElementById('selecte-all');
+        var state=!hasClass(selectAll,"checked");
+        for(var i=0;i<checkboxes.length;i++){
+            setCheckboxState(checkboxes[i],state);
+        }
+        countPrices();
+    }
+
+    function setCheckboxState(node,state){
+        if(state===undefined){
+            toggleClass(node,"checked");
+            countPrices();
+            return;
+        }
+        if(state){
+            addClass(node,"checked");
+        }else{
+            removeClass(node,"checked");
+        }
+
+    }
+
+
+</script>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="styles/main.css">
+    <meta name="viewport" content="user-scalable=no,maximum-scale=1,width=device-width,initial-scale=1"/>
+    <script src="scripts/jquery-1.9.0.min.js"></script>
+    <script src="scripts/main-new.js"></script>
+</head>
+<body class="live-body">
+    <div class="container-width-full">
+        <a href="index.html" class="order-header-back"    >
+
+        </a>
+        <div class="header">
+            粉丝社区
+        </div>
+
+    </div>
+
+    <div class="live-container">
+        <div class="live-container-content">
+            <p class="title">在一碗白米粥的时光里</p>
+            <p class="date">10小时前</p>
+            <div class="content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                柠檬 好好吃啊，味道好，新鲜，包装完整，总之一切都好！好好吃啊，味道好，新鲜，包装完整，总之一切都好！
+                <img src="images/temp_001.jpg" style="width: 100%">
+            </div>
+            <div class="method">
+                <ul>
+                    <li><span class="fans-icon-share"></span> 分享(0)</li><li><span class="fans-icon-good"></span> 点赞(1)</li><li onclick="userCommentNew(10000);"><span class="fans-icon-comment"></span> 评论(1)</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="live-comment">
+        <p>评论区</p>
+        <div class="live-comment-tab">
+            <div class="live-comment-header-img">
+                <img src="images/fans-head-img.jpg">
+            </div>
+            <div class="live-comment-right">
+                <div class="live-comment-right-header">摄影爱好者<span>1分钟前</span></div>
+                <div class="content">好棒啊</div>
+            </div>
+        </div>
+
+        <div class="live-comment-tab">
+            <div class="live-comment-header-img">
+                <img src="images/fans-head-img.jpg">
+            </div>
+            <div class="live-comment-right">
+                <div class="live-comment-right-header">摄影爱好者<span>1分钟前</span></div>
+                <div class="content">好棒啊</div>
+            </div>
+        </div>
+    </div>
+
+    <!--backgroud div-->
+    <div id="share_bg"  style="position: fixed; top: 0px; left: 0px; text-align: right; width: 100%; height:100%; display: none; background-color: rgba(0, 0, 0, 0.498039);z-index: 100;" onclick="userShareBackgroundNew();"  >
+        <img src="/img/share.png" style="width: 230px;float: right;margin-right: 2em;" >
+    </div>
+
+    <div id="comment-box-new">
+        <div id="comment-box-bg-new"  onclick="userCommentBackgroundNew();">
+        </div>
+        <div id="comment-fix-new">
+            <form id="userform-new"></form>
+            <textarea rows="10" cols="25" name="comment"  id="userform-textarea-new"></textarea>
+            <button type="button" class="myButton" id="userform-button-new" onclick="userCommentSubmitNew();" >提交</button>
+        </div>
+
+    </div>
+</body>
+</html>

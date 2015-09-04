@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>产品详情</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <div class="container-width-full">
+    <div class="header-container">
+      <a href="index.html" class="order-header-back"></a>
+      <div class="header">商品详情</div>
+    </div>
+  </div>
+  <div class="product-detail-container-width-regular">
+    <div class="notice center">
+      <p>加入购入车成功</p>
+    </div>
+    <div class="detail-card">
+      <img src="images/product.png" width="100%">
+      <div class="info">
+        <p>甘肃土豆，优质马铃薯，原产地兰州直采，口至酥软，适炖汤至酥软，适...</p>
+        <p class="price">¥200</p>
+        <ul class="flags">
+            <li class="zhe">折</li>
+            <li class="cu">促</li>
+            <li class="quan">劵</li>
+          </ul>
+      </div>
+    </div>
+    <p class="padding">&nbsp;&nbsp;</p>
+    <div class="additions">
+      <p class="time">顺丰快递，全国1-2天内可达</p>
+      <p class="bao">包装破损包退，质量问题包退</p>
+      <legend></legend>
+      <div class="comments">
+        <span>好评度: <div class="favor">98%</div></span>&nbsp;&nbsp;
+        <span><div class="comment-cnt">1000</div>人评价</span>
+        <a href="" class="right-click"><img src="images/qrcode-list-right.png" width="10rem" height="18rem"></a>
+      </div>
+    </div>
+    <p class="padding">&nbsp;&nbsp;</p>
+    <div class="more"></div>
+    <div class="container-menu">
+      <div class="menu">
+        <div class="lanmall-cart">
+          <a class="icon-lanmall-cart" href="#"></a>
+          <span class="menu-cart-count">12</span>
+        </div>
+        <div class="imm-buy">立即购买</div>
+        <div class="into-cart">加入购物车</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function fadeIn(elem, speed, opacity){
+      speed = speed || 20;
+      opacity = opacity || 100;
+      elem.style.display = 'block';
+      var val = 0;
+      (function() {
+          elem.style.opacity = val / 100;
+          val += 5;
+          if (val <= opacity) {
+          setTimeout(arguments.callee, speed)
+        }
+      })();
+    }
+    
+    function fadeOut(elem, speed, opacity){
+      speed = speed || 20;
+      opacity = opacity || 0;
+      var val = 100;
+      (function(){
+        elem.style.opacity = val / 100;
+        val -= 5;
+        if (val >= opacity) {
+          setTimeout(arguments.callee, speed);
+        } else if (val < 0) {
+          elem.style.display = 'none';
+        }
+      })();
+    }
+    
+    (function() {
+      // Implement `document.querySelector` if wants to support browsers lower than ie8.
+      var intoCartBtn, notice, clock, dupFlag = false, RESOLVE_TIME = 2000;
+      intoCartBtn = document.querySelector('.into-cart');
+      notice = document.querySelector('.notice');
+      intoCartBtn.addEventListener('click', function() {
+        if (dupFlag) return;
+        dupFlag = true;
+        fadeIn(notice, 20);
+        clock = setTimeout(function() {
+          fadeOut(notice, 20);
+          clearTimeout(clock);
+          dupFlag = false;
+        }, RESOLVE_TIME);
+      }, false);
+    })();
+  </script>
+</body>
+</html>
