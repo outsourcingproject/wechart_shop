@@ -32,32 +32,60 @@ a{
     font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
-    font-family: 'icomoon';
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
+/*[class^="icon-"], [class*=" icon-"] {*/
+    /*font-family: 'icomoon';*/
+    /*speak: none;*/
+    /*font-style: normal;*/
+    /*font-weight: normal;*/
+    /*font-variant: normal;*/
+    /*text-transform: none;*/
+    /*line-height: 1;*/
 
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    /*/!* Better Font Rendering =========== *!/*/
+    /*-webkit-font-smoothing: antialiased;*/
+    /*-moz-osx-font-smoothing: grayscale;*/
+/*}*/
+.icon-lanmall-home {
+    background-image: url('../images/home.png');
+    width: 0.29rem;
+    height: 0.27rem;
+    background-size: 100% 100%;
 }
 
-.icon-lanmall-home:before {
-    content: "\e600";
+.icon-lanmall-home.menu-color-green{
+    background-image: url('../images/home-green.png');
 }
-.icon-lanmall-cart:before {
-    content: "\e601";
+
+.icon-lanmall-cart {
+    background-image: url('../images/cart.png');
+    width: 0.29rem;
+    height: 0.27rem;
+    background-size: 100% 100%;
 }
-.icon-lanmall-compass:before {
-    content: "\e602";
+.icon-lanmall-cart.menu-color-green{
+    background-image: url('../images/cart-green.png');
 }
-.icon-lanmall-center:before {
-    content: "\e603";
+
+.icon-lanmall-compass {
+    background-image: url('../images/compass.png');
+    width: 0.29rem;
+    height: 0.27rem;
+    background-size: 100% 100%;
 }
+.icon-lanmall-compass.menu-color-green{
+    background-image: url('../images/compass-green.png');
+}
+
+.icon-lanmall-center {
+    background-image: url('../images/center.png');
+    width: 0.29rem;
+    height: 0.27rem;
+    background-size: 100% 100%;
+}
+.icon-lanmall-center.menu-color-green{
+    background-image: url('../images/center-green.png');
+}
+
 
 /*
 
@@ -223,14 +251,15 @@ Menu Page CSS
 .menu-cart-count{
     width: .16rem;
     height: .16rem;
+    padding-top: 0.025rem;
     background-color: #f38816;
     font-size: .11rem;
     color: #fff;
     text-align: center;
-    display: inline-flex;
+    display: block;
     position: absolute;
-    top: 0.039rem;
-    right: 0.15rem;
+    top: -0.05rem;
+    right: -0.05rem;
     -webkit-border-radius: .08rem;
 }
 .menu a{
@@ -240,6 +269,7 @@ Menu Page CSS
     font-size: 0.25rem;
     text-decoration: none;
     margin-top: 0.1rem;
+    position: relative;
 }
 .menu a:link{
     color: #b3b3b3;
@@ -416,7 +446,7 @@ Menu Page CSS
     display:none;
 }
 
-.cart-checkbox .checkbox{
+.cart-checkbox .checkbox , .cart-checkbox .checkbox-select-all{
     display: inline-block;
     position: absolute;
     border:1px solid #b8b8b8;
@@ -432,7 +462,7 @@ Menu Page CSS
     margin: auto;
 }
 
-.cart-checkbox .checkbox.checked{
+.cart-checkbox .checkbox.checked, .cart-checkbox .checkbox-select-all.checked{
     background-image: url('../images/checkbox-checked.png');
 }
 
@@ -1595,8 +1625,7 @@ order_list
 /* Modification starts here!!! */
 
 .product-detail-container-width-regular {
-    padding: 0;
-    padding-top: .4rem;
+    padding: .47rem 0;
     background: rgb(246, 246, 246);
     font-size: .15rem;
 }
@@ -1806,6 +1835,11 @@ legend {
     height: 100%;
     position: relative;
 }
+
+.lanmall-cart a{
+    position: relative;
+}
+
 
 .product-detail-container-width-regular .imm-buy {
     width: 40%;

@@ -98,7 +98,7 @@
     <div class="cart-checkout">
 
         <div  class="cart-checkbox" onclick="selectAll()">
-            <div id="selecte-all" class="checkbox"></div>
+            <div id="select-all" class="checkbox-select-all"></div>
         </div>
 
         <div class="cart-checkbox-select-all" onclick="selectAll()">
@@ -137,8 +137,6 @@
         if(cartList[0].productid!==undefined){
             var cartListHtml = '';
             var docs = document.getElementsByClassName('cart-list')[0];
-            //div = document.createElement("section");
-            //div.
 
             for(var i=0;i<cartList.length;i++){
 
@@ -151,7 +149,6 @@
                         cartList[i].count+'</span></div><div class="cart-tab-editor-add" onclick="cartEditorAdd(this,' +
                         cartList[i].productid+')">＋</div></div></div></section>';
             };
-            //console.log(cartListHtml);
 
              docs.innerHTML=cartListHtml +'<div class="loading-cart"><div></div></div><div class="cart-blank"></div>';
             countPrices();
@@ -255,26 +252,50 @@
 
     function selectAll(){
         var checkboxes=document.getElementsByClassName('checkbox');
-        var selectAll=document.getElementById('selecte-all');
+        var selectAll=document.getElementById('select-all');
         var state=!hasClass(selectAll,"checked");
+
         for(var i=0;i<checkboxes.length;i++){
-            setCheckboxState(checkboxes[i],state);
+            setCheckboxState(checkboxes[i],state,true);
         }
+        setCheckboxState(selectAll,state,true);
         countPrices();
     }
 
-    function setCheckboxState(node,state){
-        if(state===undefined){
-            toggleClass(node,"checked");
-            countPrices();
-            return;
+    function setCheckboxState(node,state,nocheck){
+
+        if(nocheck===undefined){
+            nocheck=false;
         }
+        if(state===undefined){
+            state=!hasClass(node,"checked");
+        }
+
         if(state){
             addClass(node,"checked");
         }else{
+
             removeClass(node,"checked");
         }
 
+        if(!nocheck){
+            var selectAll=document.getElementById('select-all');
+            var checkboxes=document.getElementsByClassName('checkbox');
+
+            var allHaveClass=true;
+            for(var i=0;i<checkboxes.length;i++){
+                allHaveClass=allHaveClass && hasClass(checkboxes[i],"checked");
+                if(!hasClass(checkboxes[i],"checked")){
+                    removeClass(selectAll,"checked");
+                }
+            }
+            if(allHaveClass){
+                addClass(selectAll,"checked");
+            }
+
+        }
+
+        countPrices();
     }
 
     countPrices();
