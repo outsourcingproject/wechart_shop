@@ -558,7 +558,16 @@ Menu Page CSS
     float: left;
     background-color: #ffffff;
     border: 0.02rem solid #f3f5f5;
-    padding-top: 0.02rem;
+
+}
+.cart-tab-editor-count input[type="text"]{
+    width: 0.68rem;
+    height: 0.20rem;
+    border:none;
+    text-align: center;
+}
+.cart-tab-editor-count input[type="text"]:focus{
+    border:none;
 }
 .cart-tab-editor-reduce{
     width: 0.24rem;
