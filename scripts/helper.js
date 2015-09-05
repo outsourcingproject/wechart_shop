@@ -31,7 +31,7 @@ function childNode(node,n){
 }
 
 function hasClass(obj, cls) {
-    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+    return !!obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
 }
 
 function addClass(obj, cls) {

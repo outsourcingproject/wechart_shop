@@ -18,67 +18,6 @@
 <div class="container cart-container">
     <div class="cart-list">
 
-        <section class="cart-tab">
-            <div class="cart-checkbox" onclick="setCheckboxState(childNode(this,0))">
-                <div class="checkbox"></div>
-            </div>
-            <div class="cart-tab-img">
-
-                <img src="images/index-product.jpg">
-
-            </div>
-            <div class="cart-tab-des" >
-                <p class="cart-tab-des-title">
-                    甘肃土豆，优质马铃薯，原产地兰州直采，口至酥软，适炖汤至酥软，适炖甘肃土豆，优质马铃薯，原产地兰州直采，口至酥软，适炖汤至酥软，适炖
-                </p>
-
-                <p class="cart-tab-des-quantity">
-                    规格：500g
-                </p>
-                <div class="cart-tab-edit-del" onclick="cartEditorDel(this,111)">X</div>
-
-                <div class="cart-tab-des-prices">
-                    ¥ 100
-                </div>
-                <div class="cart-tab-editor">
-                    <div class="cart-tab-editor-reduce" onclick="cartEditorReduce(this,111)">－</div>
-                    <div class="cart-tab-editor-count"><span>2</span></div>
-                    <div class="cart-tab-editor-add" onclick="cartEditorAdd(this,111)">＋</div>
-                </div>
-            </div>
-
-        </section>
-
-        <section class="cart-tab">
-            <div class="cart-checkbox" onclick="setCheckboxState(childNode(this,0))">
-                <div class="checkbox checked"></div>
-            </div>
-            <div class="cart-tab-img">
-
-                <img src="images/index-product.jpg">
-
-            </div>
-            <div class="cart-tab-des" >
-                <p class="cart-tab-des-title">
-                    甘肃土豆，优质马铃薯，原产地兰州直采，口至酥软，适炖汤至酥软，适炖甘肃土豆，优质马铃薯，原产地兰州直采，口至酥软，适炖汤至酥软，适炖
-                </p>
-
-                <p class="cart-tab-des-quantity">
-                    规格：500g
-                </p>
-                <div class="cart-tab-edit-del" onclick="cartEditorDel(this,111)">X</div>
-
-                <div class="cart-tab-des-prices">
-                    ¥ 100
-                </div>
-                <div class="cart-tab-editor">
-                    <div class="cart-tab-editor-reduce" onclick="cartEditorReduce(this,111)">－</div>
-                    <div class="cart-tab-editor-count"><span>2</span></div>
-                    <div class="cart-tab-editor-add" onclick="cartEditorAdd(this,111)">＋</div>
-                </div>
-            </div>
-
-        </section>
         <div class="loading-cart">
             <div></div>
         </div>
@@ -87,10 +26,7 @@
             </div>
         </div>
 
-
     </div>
-
-
 
 </div>
 
@@ -125,11 +61,27 @@
 </div>
 </body>
 <script>
+    function checkAllSelect(){
+        var selectAll=document.getElementById('select-all');
+        var checkboxes=document.getElementsByClassName('checkbox');
 
-    var baseURL='xxxxxx'//TODO: write the baseURL
+        var allHaveClass=true;
+        for(var i=0;i<checkboxes.length;i++){
+            allHaveClass=allHaveClass && hasClass(checkboxes[i],"checked");
+            if(!hasClass(checkboxes[i],"checked")){
+                removeClass(selectAll,"checked");
+            }
+        }
+        if(allHaveClass){
+            addClass(selectAll,"checked");
+        }
+    }
+
+
+    var baseURL='http://lbs.ilanmall.com';//TODO: write the baseURL
     var xhr = new XMLHttpRequest();
     var cartEditorStatus = true;
-    xhr.open('post','example.txt',false);
+    xhr.open('post','example.txt'/*baseURL+'/cart/view'*/,false);
     xhr.send(null);
 
     if((xhr.status>=200 && xhr.status<300)|| xhr.status==304){
@@ -140,7 +92,13 @@
 
             for(var i=0;i<cartList.length;i++){
 
-                cartListHtml+='<section class="cart-tab"><div class="cart-checkbox" onclick="setCheckboxState(childNode(this,0))"> <div class="checkbox"></div> </div> <div class="cart-tab-img"> <img src="' +
+                cartListHtml += '<section class="cart-tab" data-productid="' +
+                        cartList[i].productid +'"><div class="cart-checkbox" onclick="setCheckboxState(childNode(this,0))"> <div class="checkbox ';
+
+                if(parseInt(cartList[i].select)){
+                    cartListHtml +='checked';
+                }
+                cartListHtml += '"></div> </div> <div class="cart-tab-img"> <img src="' +
                         cartList[i].imgurl+'"> </div> <div class="cart-tab-des" > <p class="cart-tab-des-title">' +
                         cartList[i].title+'</p> <p class="cart-tab-des-quantity">规格：500g</p><div class="cart-tab-edit-del" onclick="cartEditorDel(this,' +
                         cartList[i].productid+')">X</div> <div class="cart-tab-des-prices">¥ ' +
@@ -150,22 +108,15 @@
                         cartList[i].productid+')">＋</div></div></div></section>';
             };
 
-             docs.innerHTML=cartListHtml +'<div class="loading-cart"><div></div></div><div class="cart-blank"></div>';
+            docs.innerHTML=cartListHtml +'<div class="cart-blank"></div>';
             countPrices();
-            document.getElementsByClassName("cart-checkout-button")[0].disabled = false;
-        }else{
-            document.getElementsByClassName("cart-checkout-button")[0].disabled = true;
-
+            checkAllSelect();
         }
 
     }else{
         alert(xhr.status);
         alert(xhr.getAllResponseHeaders());
     }
-
-
-
-
 
     function cartEditorAdd(r,productId){
         var count = parseInt(previousSibling(r).childNodes[0].innerText);
@@ -177,6 +128,7 @@
             productid:productId,
             count:count
         }
+
         var h = new XMLHttpRequest();
         h.open('post',baseURL+'/cart/update',true);
         h.send(JSON.stringify(jsonUpdate));
@@ -197,37 +149,36 @@
 
         nextSibling(r).childNodes[0].innerText= count;
 
-//        var jsonUpdate= {
-//            productid:productId,
-//            count:count
-//        }
-//        var h = new XMLHttpRequest();
-//        h.open('post',baseURL+'/cart/update',true);
-//        h.send(JSON.stringify(jsonUpdate));
-//        h.onreadystatechange = function(){
-//            if(h.readyState==4){
-//                console.log(h.responseText);
-//            }
-//        }
+        var jsonUpdate= {
+            productid:productId,
+            count:count
+        }
+        var h = new XMLHttpRequest();
+        h.open('post',baseURL+'/cart/update',true);
+        h.send(JSON.stringify(jsonUpdate));
+        h.onreadystatechange = function(){
+            if(h.readyState==4){
+                console.log(h.responseText);
+            }
+        }
 
         countPrices();
     }
     function cartEditorDel(r,productId){
         var jsonUpdate= {
             productid:productId
-
         }
         var listDel = r.parentNode.parentNode;
         listDel.parentNode.removeChild(listDel);
 
-//        var h = new XMLHttpRequest();
-//        h.open('post',baseURL+'/cart/del',true);
-//        h.send(JSON.stringify(jsonUpdate));
-//        h.onreadystatechange = function(){
-//            if(h.readyState==4){
-//                console.log(h.responseText);
-//            }
-//        }
+        var h = new XMLHttpRequest();
+        h.open('post',baseURL+'/cart/del',true);
+        h.send(JSON.stringify(jsonUpdate));
+        h.onreadystatechange = function(){
+            if(h.readyState==4){
+                console.log(h.responseText);
+            }
+        }
 
         countPrices();
     }
@@ -258,47 +209,58 @@
         for(var i=0;i<checkboxes.length;i++){
             setCheckboxState(checkboxes[i],state,true);
         }
-        setCheckboxState(selectAll,state,true);
+        setCheckboxState(selectAll,state,true,false);
         countPrices();
     }
 
-    function setCheckboxState(node,state,nocheck){
+    function setCheckboxState(node,state,nocheck,sendAjax){
 
-        if(nocheck===undefined){
-            nocheck=false;
-        }
         if(state===undefined){
             state=!hasClass(node,"checked");
         }
 
+        if(nocheck===undefined){
+            nocheck=false;
+        }
+
+        if(sendAjax===undefined){
+            sendAjax=true;
+        }
+
+        var changed=state^hasClass(node,"checked");
+
         if(state){
             addClass(node,"checked");
         }else{
-
             removeClass(node,"checked");
         }
 
         if(!nocheck){
-            var selectAll=document.getElementById('select-all');
-            var checkboxes=document.getElementsByClassName('checkbox');
+            checkAllSelect();
+        }
 
-            var allHaveClass=true;
-            for(var i=0;i<checkboxes.length;i++){
-                allHaveClass=allHaveClass && hasClass(checkboxes[i],"checked");
-                if(!hasClass(checkboxes[i],"checked")){
-                    removeClass(selectAll,"checked");
+        if(changed && sendAjax){
+            var productDoc=node.parentNode.parentNode;
+            var productid=productDoc. getAttribute('data-productid');
+            var count=parseInt(productDoc.getElementsByClassName('cart-tab-editor-count')[0].innerText);;
+            var jsonUpdate={
+                "productid": productid,
+                "count": count,
+                "select": state?1:0
+            };
+            var h = new XMLHttpRequest();
+            h.open('post',baseURL+'/cart/update',true);
+            h.send(JSON.stringify(jsonUpdate));
+            h.onreadystatechange = function(){
+                if(h.readyState==4){
+                    console.log(h.responseText);
                 }
             }
-            if(allHaveClass){
-                addClass(selectAll,"checked");
-            }
-
         }
+
 
         countPrices();
     }
-
     countPrices();
-    selectAll();
 </script>
 </html>
