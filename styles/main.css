@@ -1696,6 +1696,10 @@ order_list
     border-bottom-color: rgb(167, 205, 14);
 }
 
+.flags li.placeholder:before, .flags li.placeholder:after {
+    border: 0;
+}
+
 .center {
   position: absolute;
   margin: auto;
@@ -1811,12 +1815,14 @@ legend {
     width: 40%;
     background: rgb(137, 205, 60);
     line-height: .5rem;
+    display: inline-block;
 }
 
 .product-detail-container-width-regular .into-cart {
     width: 40%;
     background: rgb(114, 170, 51);
     line-height: .5rem;
+    display: inline-block;
 }
 
 .order-detail-container-width-regular {
