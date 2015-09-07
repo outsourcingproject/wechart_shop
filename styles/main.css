@@ -1550,7 +1550,6 @@ order_list
 
     background: url("../images/qrcode-list-right.png") no-repeat;
     background-size: 100%;
-    float: right;
 }
 
 .public-add-cart{
@@ -1830,6 +1829,7 @@ legend {
 .product-detail-container-width-regular .menu {
     color: white;
     display: flex;
+    position: relative;
     text-align: center;
     max-width: 100%;
 }
@@ -1838,6 +1838,7 @@ legend {
     width: 20%;
     height: 100%;
     position: relative;
+    float: left;
 }
 
 .lanmall-cart a{
@@ -1849,14 +1850,14 @@ legend {
     width: 40%;
     background: rgb(137, 205, 60);
     line-height: .5rem;
-    display: inline-block;
+    float: left;
 }
 
 .product-detail-container-width-regular .into-cart {
     width: 40%;
     background: rgb(114, 170, 51);
     line-height: .5rem;
-    display: inline-block;
+    float: left;
 }
 
 .order-detail-container-width-regular {
