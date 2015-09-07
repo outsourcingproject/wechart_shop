@@ -1884,7 +1884,6 @@ legend {
 
 .border-card .line {
     width: 100%;
-    display: flex;
     position: relative;
 }
 
@@ -1900,7 +1899,7 @@ legend {
 .left-col, .right-col {
     width: 50%;
     text-align: center;
-    display: inline-block;
+    float: left;
 }
 
 .float-left {
