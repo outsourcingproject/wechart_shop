@@ -14,7 +14,7 @@
     </div>
   </div>
   <div class="product-detail-container-width-regular">
-    <div class="notice center">
+    <div id="notice" class="notice center">
       <p>加入购入车成功</p>
     </div>
     <div class="detail-card">
@@ -50,7 +50,7 @@
 
         </div>
         <div class="imm-buy">立即购买</div>
-        <div class="into-cart">加入购物车</div>
+        <div id="into-cart" class="into-cart">加入购物车</div>
       </div>
     </div>
   </div>
@@ -87,8 +87,8 @@
     (function() {
       // Implement `document.querySelector` if wants to support browsers lower than ie8.
       var intoCartBtn, notice, clock, dupFlag = false, RESOLVE_TIME = 2000;
-      intoCartBtn = document.querySelector('.into-cart');
-      notice = document.querySelector('.notice');
+      intoCartBtn = document.getElementById('into-cart');
+      notice = document.getElementById('notice');
       intoCartBtn.addEventListener('click', function() {
         if (dupFlag) return;
         dupFlag = true;
