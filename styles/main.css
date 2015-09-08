@@ -560,13 +560,13 @@ Menu Page CSS
     border: 0.02rem solid #f3f5f5;
 
 }
-.cart-tab-editor-count input[type="text"]{
+.cart-tab-editor-count input{
     width: 0.68rem;
     height: 0.20rem;
     border:none;
     text-align: center;
 }
-.cart-tab-editor-count input[type="text"]:focus{
+.cart-tab-editor-count input:focus{
     border:none;
 }
 .cart-tab-editor-reduce{

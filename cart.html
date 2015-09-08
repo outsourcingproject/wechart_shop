@@ -18,37 +18,6 @@
 <div class="container cart-container">
     <div class="cart-list">
 
-        <section class="cart-tab" data-productid="111">
-            <div class="cart-checkbox" onclick="setCheckboxState(childNode(this,0))">
-                <div class="checkbox"></div>
-            </div>
-            <div class="cart-tab-img">
-
-                <img src="images/index-product.jpg">
-
-            </div>
-            <div class="cart-tab-des" >
-                <p class="cart-tab-des-title">
-                    甘肃土豆，优质马铃薯，原产地兰州直采，口至酥软，适炖汤至酥软，适炖甘肃土豆，优质马铃薯，原产地兰州直采，口至酥软，适炖汤至酥软，适炖
-                </p>
-
-                <p class="cart-tab-des-quantity">
-                    规格：500g
-                </p>
-                <div class="cart-tab-edit-del" onclick="cartEditorDel(this,111)">X</div>
-
-                <div class="cart-tab-des-prices">
-                    ¥ 100
-                </div>
-                <div class="cart-tab-editor">
-                    <div class="cart-tab-editor-reduce" onclick="cartEditorReduce(this,111)">－</div>
-                    <div class="cart-tab-editor-count"><input class="cart-tab-editor-count-input" type="text" value="1" onchange="cartEditorCountChange(this,111)"></div>
-                    <div class="cart-tab-editor-add" onclick="cartEditorAdd(this,111)">＋</div>
-                </div>
-            </div>
-
-        </section>
-
         <div class="loading-cart">
             <div></div>
         </div>
@@ -201,6 +170,7 @@
         if(isNaN(count)||count<1){
             count=r.value=1;
         }
+        r.value=count;
         var jsonUpdate= {
             productid:productId,
             count:count
