@@ -263,7 +263,7 @@ Menu Page CSS
     -webkit-border-radius: .08rem;
 }
 .menu a{
-    color: #b3b3b3;
+    color: #ffffff;
     display: inline-block;
     vertical-align: top;
     font-size: 0.25rem;
@@ -272,22 +272,22 @@ Menu Page CSS
     position: relative;
 }
 .menu a:link{
-    color: #b3b3b3;
+    color: #ffffff;
     text-decoration: none;
 }
 .menu li:nth-child(2){
     position: relative;
 }
 .menu a:visited{
-    color: #b3b3b3;
+    color: #ffffff;
     text-decoration: none;
 }
 .menu a:hover {
-    color: #b3b3b3;
+    color: #ffffff;
     text-decoration: none;
 }
 .menu a:active{
-    color: #b3b3b3;
+    color: #ffffff;
     text-decoration: none;
     background-color: rgba(0,0,0,0);
 }
@@ -298,7 +298,7 @@ Menu Page CSS
     /*margin-right: auto;*/
 }
 .menu .menu-color-green{
-    color: #89cd3c!important;
+    color: #89cd3c;
 }
 
 
@@ -1933,6 +1933,16 @@ button.inflate {
     margin: .2rem;
 }
 
+.left-col button.inflate {
+    background: white;
+    color: #89cd3c;
+    border: 1px solid #89cd3c;
+    border-radius: 3px;
+    font-size: .16rem;
+    padding: .05rem .15rem;
+    margin: .2rem;
+}
+
 button.inflate:hover {
     color: rgb(137, 205, 60);
     border: 1px solid rgb(137, 205, 60);
@@ -1986,18 +1996,26 @@ button.inflate:hover {
 
 .order-detail-container-width-regular .order-submit {
     background: url("../images/order_submit.png") no-repeat center;
+    background-size: auto 30% ;
+    background-position-y: 40%;
 }
 
 .order-detail-container-width-regular .order-check {
     background: url("../images/order_check.png") no-repeat center;
+    background-size: auto 30% ;
+    background-position-y: 40%;
 }
 
 .order-detail-container-width-regular .order-ship {
     background: url("../images/order_ship.png") no-repeat center;
+    background-size: auto 30% ;
+    background-position-y: 40%;
 }
 
 .order-detail-container-width-regular .order-resolve {
     background: url("../images/order_resolve.png") no-repeat center;
+    background-size: auto 30% ;
+    background-position-y: 40%;
 }
 
 .header-container {
